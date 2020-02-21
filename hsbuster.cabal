@@ -1,0 +1,85 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 9244e5331d71e0c0a115383eafc0d80e9d8cbf679f2e5ae9da7bd3d5510d5aed
+
+name:           hsbuster
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/githubuser/hsbuster#readme>
+homepage:       https://github.com/m074/hsbuster#readme
+bug-reports:    https://github.com/m074/hsbuster/issues
+author:         mota
+maintainer:     example@example.com
+copyright:      2020 mota
+license:        BSD3
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/m074/hsbuster
+
+library
+  exposed-modules:
+      Arguments.Args
+      Files.Wordlist
+      Parser.HttpParser
+      Requester.Request
+  other-modules:
+      Paths_hsbuster
+  hs-source-dirs:
+      src
+  default-extensions: DeriveDataTypeable ScopedTypeVariables OverloadedStrings
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , network
+    , network-simple
+    , split
+    , stm
+  default-language: Haskell2010
+
+executable hsbuster-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_hsbuster
+  hs-source-dirs:
+      app
+  default-extensions: DeriveDataTypeable ScopedTypeVariables OverloadedStrings
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N -fno-cse
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , hsbuster
+    , network
+    , network-simple
+    , split
+    , stm
+  default-language: Haskell2010
+
+test-suite hsbuster-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_hsbuster
+  hs-source-dirs:
+      test
+  default-extensions: DeriveDataTypeable ScopedTypeVariables OverloadedStrings
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , bytestring
+    , cmdargs
+    , hsbuster
+    , network
+    , network-simple
+    , split
+    , stm
+  default-language: Haskell2010
